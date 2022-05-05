@@ -12,8 +12,12 @@ jobs:
     timeout-minutes: 5
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
     - name: Download GeoLite.mmdb
       run: |
+        cd  ${{ inputs.working_directory }}
         curl -s https://antifilter.network/download/ip.lst > rkn_ips.lst
         curl -s https://antifilter.network/download/ipsum.lst >> rkn_ips.lst
         curl -s https://antifilter.network/download/subnet.lst >> rkn_ips.lst
