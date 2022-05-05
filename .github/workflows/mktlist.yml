@@ -15,7 +15,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Download GeoLite.mmdb
+    - name: Download IP's
       run: |
         curl -s https://antifilter.network/download/ip.lst > ./rkn_ips.lst
         curl -s https://antifilter.network/download/ipsum.lst >> ./rkn_ips.lst
