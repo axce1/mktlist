@@ -23,9 +23,8 @@ jobs:
         curl -s https://antifilter.network/download/ipsum.lst >> ./rkn_ips.lst
         curl -s https://antifilter.network/download/subnet.lst >> ./rkn_ips.lst
         sh -c ./script.sh ./rkn_ips.lst
-        cp rkn_ips.lst > subnets.rsc
         mkdir -p upload
-        cp -v subnets.rsc upload
+        cp -v ./subnets.rsc upload
         echo "TAG_NAME=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
 
     - name: Push to "download" branch
