@@ -17,12 +17,10 @@ jobs:
 
     - name: Download GeoLite.mmdb
       run: |
-        git clone https://github.com/axce1/mktlist
         curl -s https://antifilter.network/download/ip.lst > rkn_ips.lst
         curl -s https://antifilter.network/download/ipsum.lst >> rkn_ips.lst
         curl -s https://antifilter.network/download/subnet.lst >> rkn_ips.lst
-        ls -la
-        pwd
+        git clone https://github.com/axce1/mktlist
         sh -c ./mktlist/script.sh rkn_ips.lst
         mkdir -p upload
         cp -v subnets.rsc upload
