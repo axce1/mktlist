@@ -22,8 +22,8 @@ jobs:
         curl -s https://antifilter.network/download/ip.lst > ./rkn_ips.lst
         curl -s https://antifilter.network/download/ipsum.lst >> ./rkn_ips.lst
         curl -s https://antifilter.network/download/subnet.lst >> ./rkn_ips.lst
-        tail ./rkn_ips.lst
         sh -c ./script.sh ./rkn_ips.lst
+        tail ./subnets.rsc
         mkdir -p upload
         cp -v ./subnets.rsc upload
         echo "TAG_NAME=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
