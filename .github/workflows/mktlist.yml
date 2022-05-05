@@ -38,15 +38,15 @@ jobs:
         git commit -m "${{ env.TAG_NAME }}"
         git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         git push -f origin download
-
-    - name: Upload to Releases
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        tag_name: ${{ env.TAG_NAME }}
-        body: ${{ env.TAG_NAME }}
-        files: upload/*.mmdb
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: upload/subnets.rsc
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.2.0
