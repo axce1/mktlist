@@ -1,10 +1,8 @@
 name: Publish MktList
 
 on:
-  repository_dispatch:
-  workflow_dispatch:
   schedule:
-    - cron: 05 3 * * *
+    - cron: '*/5 0 * * *'
 
 jobs:
   run:
