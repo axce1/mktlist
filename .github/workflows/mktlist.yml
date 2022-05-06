@@ -45,8 +45,11 @@ jobs:
     
     - name: Release
       uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: ${{ env.TAG_NAME }}
+        body: ${{ env.TAG_NAME }}
         files: |
           ./upload/allyouneed.rsc
           ./upload/subnets.rsc
