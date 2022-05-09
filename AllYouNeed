@@ -1,0 +1,23 @@
+:do {
+    :do {
+        /file remove "/allyouneed.rsc";
+    } on-error={}
+
+    :put "Downloading allyouneed.rsc...";
+    :do {
+	/tool fetch url="https://raw.githubusercontent.com/axce1/mktlist/download/allyouneed.rsc" dst-path="/allyouneed.rsc"
+    } on-error={
+        :put "Error. Download failed";
+    }
+	
+    /ip firewall address-list remove [/ip firewall address-list find list=rkn]
+
+    :put "Importing allyouneed.rsc...";
+    :do {
+        /import "/allyouneed.rsc";
+    } on-error={
+        :put "import failed. unknown error.";
+    }
+
+    :put "Update Complete.";
+}
